@@ -8,7 +8,7 @@ import (
 )
 
 func (s *Server) handleDefault(c *gin.Context) {
-	c.JSON(http.StatusOK, "What the fuck are you doing?")
+	c.JSON(http.StatusOK, "axuanhttp OK!!!!!!!")
 }
 
 func (s *Server) handleOptionsPing(c *gin.Context) {
