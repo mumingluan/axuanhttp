@@ -1,75 +1,19 @@
 # axuanhttp
-go work!
-> HK4E Emulators
+> HK4E HTTP Layer Emulators
 
 ## Build binaries
-
-### Quick start
 
 Setup your golang environment, then run the following commands to build binaries.
 
 ```bash
-mkdir -p $GOPATH/src/github.com/teyvat-helper
-cd $GOPATH/src/github.com/teyvat-helper
+mkdir -p $GOPATH/src/github.com/mumingluan
+cd $GOPATH/src/github.com/mumingluan
 git clone https://github.com/mumingluan/axuanhttp.git
 cd axuanhttp
-go build -trimpath -ldflags "-s -w" -o bin/client cmd/client/main.go
 go build -trimpath -ldflags "-s -w" -o bin/server cmd/server/main.go
 # the binaries are in bin/ directory.
 ```
 
-Alternatively, use the `go work` command to replace `hk4e-proto` module with your own version.
+## Use Action artifacts
 
-```bash
-mkdir -p $GOPATH/src/github.com/teyvat-helper
-cd $GOPATH/src/github.com/teyvat-helper
-git clone https://github.com/mumingluan/axuanhttp.git
-# Place your hk4e-proto directory in the same directory as axuanhttp.
-go work init
-go work use axuanhttp
-go work use hk4e-proto
-cd axuanhttp
-go build -trimpath -ldflags "-s -w" -o bin/client cmd/client/main.go
-go build -trimpath -ldflags "-s -w" -o bin/server cmd/server/main.go
-# the binaries are in bin/ directory, with your hk4e-proto.
-```
-> Note: The `go work` command is only available in Go 1.17 or later.
-
-### Action artifacts
-
-Choose one of the artifacts from the [nightly.link for GitHub](https://nightly.link/):
-
-| Platform              | Arch            | Artifact                                                                                                                      |
-|-----------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `macOS Intel Chip`    | `darwin/amd64`  | [axuanhttp_darwin_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_darwin_amd64.zip.zip)   |
-| `macOS Apple Silicon` | `darwin/arm64`  | [axuanhttp_darwin_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_darwin_arm64.zip.zip)   |
-| `Linux 32 bit`        | `linux/386`     | [axuanhttp_linux_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_386.zip.zip)         |
-| `Linux 64 bit`        | `linux/amd64`   | [axuanhttp_linux_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_amd64.zip.zip)     |
-| `Linux ARM`           | `linux/arm`     | [axuanhttp_linux_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_arm.zip.zip)         |
-| `Linux ARM 64`        | `linux/arm64`   | [axuanhttp_linux_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_arm64.zip.zip)     |
-| `Windows 32 bit`      | `windows/386`   | [axuanhttp_windows_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_386.zip.zip)     |
-| `Windows 64 bit`      | `windows/amd64` | [axuanhttp_windows_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_amd64.zip.zip) |
-| `Windows ARM`         | `windows/arm`   | [axuanhttp_windows_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_arm.zip.zip)     |
-| `Windows ARM 64`      | `windows/arm64` | [axuanhttp_windows_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_arm64.zip.zip) |
-
-## Configuration
-
-## License
-
-[Apache License 2.0](LICENSE)
-
-```
-Copyright 2022 Teyvat Helper Team and contributors
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
+Go to Actions page and download artifacts for your OS and arch.
