@@ -6,9 +6,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
-	"github.com/teyvat-helper/hk4e-emu/pkg"
-	"github.com/teyvat-helper/hk4e-emu/pkg/sdk"
-	"github.com/teyvat-helper/hk4e-emu/pkg/store"
+	"github.com/mumingluan/axuanhttp/pkg"
+	"github.com/mumingluan/axuanhttp/pkg/sdk"
+	"github.com/mumingluan/axuanhttp/pkg/store"
 )
 
 func (s *Server) handleAPIPublicKey(c *gin.Context) {

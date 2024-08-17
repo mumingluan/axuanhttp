@@ -13,9 +13,9 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
-	"github.com/teyvat-helper/hk4e-emu/pkg/config"
-	"github.com/teyvat-helper/hk4e-emu/pkg/ec2b"
-	"github.com/teyvat-helper/hk4e-emu/pkg/store"
+	"github.com/mumingluan/axuanhttp/pkg/config"
+	"github.com/mumingluan/axuanhttp/pkg/ec2b"
+	"github.com/mumingluan/axuanhttp/pkg/store"
 )
 
 type Server struct {

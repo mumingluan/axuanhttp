@@ -1,12 +1,3 @@
-defaultFilter: &defaultFilter
-  enable: true
-  rules:
-    # all packets are allowed by default
-    - allow:*
-    # except for the following rules
-    - block:WindSeedClientNotify
-    - block:PlayerLuaShellNotify
-
 loggingDir: log
 baseDomain: example.com
 autoSignUp: true
@@ -27,10 +18,6 @@ gateServer:
   - name: os_beta01
     title: 127.0.0.1:22102
     addr: 127.0.0.1:22102
-gameServer:
-  enable: true
-  addr: 0.0.0.0:22102
-  filter: *defaultFilter
 database:
   driver: sqlite
-  dsn: file:data/hk4e-emu.db?cache=shared&mode=rwc
+  dsn: file:data/axuanhttp.db?cache=shared&mode=rwc

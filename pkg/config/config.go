@@ -20,7 +20,6 @@ type Config struct {
 	PassSignIn bool               `mapstructure:"passSignIn"`
 	HTTPServer HTTPServerConfig   `mapstructure:"httpServer"`
 	GateServer []GateServerConfig `mapstructure:"gateServer"`
-	GameServer GameServerConfig   `mapstructure:"gameServer"`
 	Database   DatabaseConfig     `mapstructure:"database"`
 }
 
@@ -49,12 +48,6 @@ type FilterConfig struct {
 	Rules  []string `mapstructure:"rules"`
 }
 
-type GameServerConfig struct {
-	Enable bool         `mapstructure:"enable"`
-	Addr   string       `mapstructure:"addr"`
-	Filter FilterConfig `mapstructure:"filter"`
-}
-
 type DatabaseConfig struct {
 	Driver string `mapstructure:"driver"`
 	DSN    string `mapstructure:"dsn"`
@@ -79,21 +72,9 @@ var DefaultConfig = Config{
 		Title: "127.0.0.1:22102",
 		Addr:  "127.0.0.1:22102",
 	}},
-	GameServer: GameServerConfig{
-		Enable: true,
-		Addr:   "0.0.0.0:22102",
-		Filter: FilterConfig{
-			Enable: true,
-			Rules: []string{
-				"allow:*",
-				"block:WindSeedClientNotify",
-				"block:PlayerLuaShellNotify",
-			},
-		},
-	},
 	Database: DatabaseConfig{
 		Driver: "sqlite",
-		DSN:    "file:data/hk4e-emu.db?cache=shared&mode=rwc",
+		DSN:    "file:data/axuanhttp.db?cache=shared&mode=rwc",
 	},
 }
 
@@ -102,8 +83,8 @@ func LoadConfig() (cfg Config) { return LoadConfigName("config") }
 func LoadConfigName(name string) (cfg Config) {
 	viper.SetConfigName(name)
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("/etc/hk4e-emu")
-	viper.AddConfigPath("$HOME/.hk4e-emu")
+	viper.AddConfigPath("/etc/axuanhttp")
+	viper.AddConfigPath("$HOME/.axuanhttp")
 	viper.AddConfigPath(".")
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
@@ -144,6 +125,6 @@ func newRollingFile(dir string) io.Writer {
 		return nil
 	}
 	return &lumberjack.Logger{
-		Filename: path.Join(dir, fmt.Sprintf("hk4e-emu-%s.log", time.Now().Format("2006-01-02"))),
+		Filename: path.Join(dir, fmt.Sprintf("axuanhttp-%s.log", time.Now().Format("2006-01-02"))),
 	}
 }

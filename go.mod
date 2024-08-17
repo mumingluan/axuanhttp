@@ -1,4 +1,4 @@
-module github.com/teyvat-helper/hk4e-emu
+module github.com/mumingluan/axuanhttp
 
 go 1.19
 

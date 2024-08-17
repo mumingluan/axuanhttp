@@ -26,9 +26,9 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o hk4e-emu cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip hk4e-emu config.yaml data LICENSE README.md
+          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -56,9 +56,9 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o hk4e-emu cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip hk4e-emu config.yaml data LICENSE README.md
+          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
@@ -86,9 +86,9 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o hk4e-emu.exe cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp.exe cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip hk4e-emu.exe config.yaml data LICENSE README.md
+          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp.exe config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
