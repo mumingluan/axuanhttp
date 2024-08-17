@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-darwin:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         goos: [darwin]
@@ -28,15 +28,15 @@ jobs:
         run: |
           go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
+          zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
-          path: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          name: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          path: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
 
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         goos: [linux]
@@ -58,15 +58,15 @@ jobs:
         run: |
           go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
+          zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
-          path: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          name: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          path: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
 
   build-windows:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         goos: [windows]
@@ -88,10 +88,10 @@ jobs:
         run: |
           go build -trimpath -ldflags "-s -w" -o axuanhttp.exe cmd/server/main.go
           cp config.example.yaml config.yaml
-          zip -r hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp.exe config.yaml data LICENSE README.md
+          zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp.exe config.yaml data LICENSE README.md
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
-          path: hke4-emu_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          name: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
+          path: axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip
           

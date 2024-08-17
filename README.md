@@ -41,16 +41,16 @@ Choose one of the artifacts from the [nightly.link for GitHub](https://nightly.l
 
 | Platform              | Arch            | Artifact                                                                                                                      |
 |-----------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `macOS Intel Chip`    | `darwin/amd64`  | [hke4-emu_darwin_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_darwin_amd64.zip.zip)   |
-| `macOS Apple Silicon` | `darwin/arm64`  | [hke4-emu_darwin_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_darwin_arm64.zip.zip)   |
-| `Linux 32 bit`        | `linux/386`     | [hke4-emu_linux_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_linux_386.zip.zip)         |
-| `Linux 64 bit`        | `linux/amd64`   | [hke4-emu_linux_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_linux_amd64.zip.zip)     |
-| `Linux ARM`           | `linux/arm`     | [hke4-emu_linux_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_linux_arm.zip.zip)         |
-| `Linux ARM 64`        | `linux/arm64`   | [hke4-emu_linux_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_linux_arm64.zip.zip)     |
-| `Windows 32 bit`      | `windows/386`   | [hke4-emu_windows_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_windows_386.zip.zip)     |
-| `Windows 64 bit`      | `windows/amd64` | [hke4-emu_windows_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_windows_amd64.zip.zip) |
-| `Windows ARM`         | `windows/arm`   | [hke4-emu_windows_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_windows_arm.zip.zip)     |
-| `Windows ARM 64`      | `windows/arm64` | [hke4-emu_windows_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/hke4-emu_windows_arm64.zip.zip) |
+| `macOS Intel Chip`    | `darwin/amd64`  | [axuanhttp_darwin_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_darwin_amd64.zip.zip)   |
+| `macOS Apple Silicon` | `darwin/arm64`  | [axuanhttp_darwin_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_darwin_arm64.zip.zip)   |
+| `Linux 32 bit`        | `linux/386`     | [axuanhttp_linux_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_386.zip.zip)         |
+| `Linux 64 bit`        | `linux/amd64`   | [axuanhttp_linux_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_amd64.zip.zip)     |
+| `Linux ARM`           | `linux/arm`     | [axuanhttp_linux_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_arm.zip.zip)         |
+| `Linux ARM 64`        | `linux/arm64`   | [axuanhttp_linux_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_linux_arm64.zip.zip)     |
+| `Windows 32 bit`      | `windows/386`   | [axuanhttp_windows_386.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_386.zip.zip)     |
+| `Windows 64 bit`      | `windows/amd64` | [axuanhttp_windows_amd64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_amd64.zip.zip) |
+| `Windows ARM`         | `windows/arm`   | [axuanhttp_windows_arm.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_arm.zip.zip)     |
+| `Windows ARM 64`      | `windows/arm64` | [axuanhttp_windows_arm64.zip](https://nightly.link/qinastar/axuanhttp/workflows/build/main/axuanhttp_windows_arm64.zip.zip) |
 
 ## Configuration
 
