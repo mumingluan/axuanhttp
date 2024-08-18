@@ -49,7 +49,6 @@ type FilterConfig struct {
 }
 
 type DatabaseConfig struct {
-	Driver string `mapstructure:"driver"`
 	DSN    string `mapstructure:"dsn"`
 }
 
@@ -73,7 +72,6 @@ var DefaultConfig = Config{
 		Addr:  "127.0.0.1:22102",
 	}},
 	Database: DatabaseConfig{
-		Driver: "sqlite",
 		DSN:    "file:data/axuanhttp.db?cache=shared&mode=rwc",
 	},
 }

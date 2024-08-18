@@ -19,5 +19,4 @@ gateServer:
     title: 127.0.0.1:22102
     addr: 127.0.0.1:22102
 database:
-  driver: sqlite
   dsn: file:data/axuanhttp.db?cache=shared&mode=rwc

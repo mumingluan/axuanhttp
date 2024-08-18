@@ -33,16 +33,8 @@ func (s *Store) install(ctx context.Context) error {
 	if s.checkInit(ctx) {
 		return nil
 	}
-	s.db.NewDropTable().Model((*HomeData)(nil)).IfExists().Exec(ctx)
-	s.db.NewDropTable().Model((*BlockData)(nil)).IfExists().Exec(ctx)
-	s.db.NewDropTable().Model((*PlayerData)(nil)).IfExists().Exec(ctx)
-	s.db.NewDropTable().Model((*Player)(nil)).IfExists().Exec(ctx)
 	s.db.NewDropTable().Model((*Account)(nil)).IfExists().Exec(ctx)
 	s.db.NewCreateTable().Model((*Account)(nil)).IfNotExists().Exec(ctx)
-	s.db.NewCreateTable().Model((*Player)(nil)).IfNotExists().Exec(ctx)
-	s.db.NewCreateTable().Model((*PlayerData)(nil)).IfNotExists().Exec(ctx)
-	s.db.NewCreateTable().Model((*BlockData)(nil)).IfNotExists().Exec(ctx)
-	s.db.NewCreateTable().Model((*HomeData)(nil)).IfNotExists().Exec(ctx)
 	randBytes := make([]byte, 6)
 	if _, err := rand.Read(randBytes); err != nil {
 		return err
