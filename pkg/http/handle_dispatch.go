@@ -7,7 +7,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/mumingluan/hk4e-proto/pb"
+	"github.com/mumingluan/axuanhttp/pkg/pb"
 	"google.golang.org/protobuf/proto"
 )
 
