@@ -66,7 +66,7 @@ func (e *Ec2b) Bytes() []byte {
 
 func (e *Ec2b) SetSeed(seed uint64) {
 	e.seed = seed
-	r := mt19937.NewRand64()
+	r := ec2b.NewRand64()
 	r.Seed(int64(e.seed))
 	e.temp = make([]byte, 4096)
 	for i := 0; i < 4096>>3; i++ {

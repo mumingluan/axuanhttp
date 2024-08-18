@@ -17,7 +17,7 @@ import (
 )
 
 func (s *Server) handleSDKRiskyCheck(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"id":      "",
 		"action":  "ACTION_NONE",
 		"geetest": nil,
@@ -25,15 +25,15 @@ func (s *Server) handleSDKRiskyCheck(c *gin.Context) {
 }
 
 func (s *Server) handleSDKShieldLogin(c *gin.Context) {
-	var req sdk.ShieldLoginRequestData
+	var reqhttp.ShieldLoginRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
 	if req.Account == "" {
 		log.Error().Err(fmt.Errorf("account is empty")).Msg("Bad request")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
 	account, err := s.serviceShieldLogin(c, req.Account, req.Password, req.IsCrypto)
@@ -42,12 +42,12 @@ func (s *Server) handleSDKShieldLogin(c *gin.Context) {
 	}
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to shield login")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var resp sdk.ShieldLoginResponseData
-	resp.Account = &sdk.Account{
-		UID:           sdk.ID(account.ID),
+	var resphttp.ShieldLoginResponseData
+	resp.Account = &http.Account{
+		UID:          http.ID(account.ID),
 		Name:          account.Username,
 		Email:         account.Email,
 		IsEmailVerify: "0",
@@ -56,7 +56,7 @@ func (s *Server) handleSDKShieldLogin(c *gin.Context) {
 		AreaCode:      "**",
 	}
 	resp.RealNameOperation = "None"
-	c.JSON(http.StatusOK, sdk.NewResponse(0, &resp))
+	c.JSON(http.StatusOK,http.NewResponse(0, &resp))
 }
 
 func (s *Server) serviceShieldLogin(ctx context.Context, username, password string, isCrypto bool) (record *store.Account, err error) {
@@ -77,7 +77,7 @@ func (s *Server) serviceShieldLogin(ctx context.Context, username, password stri
 			password = string(p)
 		}
 		if bcrypt.CompareHashAndPassword([]byte(record.Password), []byte(password)) != nil {
-			return nil, sdk.ErrInvalidPassword
+			return nil,http.ErrInvalidPassword
 		}
 	}
 	loginToken := make([]byte, 24)
@@ -118,20 +118,20 @@ func (s *Server) serviceCreateAccount(ctx context.Context, username, password st
 }
 
 func (s *Server) handleSDKShieldVerify(c *gin.Context) {
-	var req sdk.ShieldVerifyRequestData
+	var reqhttp.ShieldVerifyRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-210, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
 		return
 	}
 	account, err := s.serviceShieldVerify(c, int64(req.UID), req.Token)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to shield verify")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-210, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
 		return
 	}
-	var resp sdk.ShieldVerifyResponseData
-	resp.Account = &sdk.Account{
+	var resphttp.ShieldVerifyResponseData
+	resp.Account = &http.Account{
 		UID:           req.UID,
 		Email:         account.Email,
 		Name:          account.Username,
@@ -141,7 +141,7 @@ func (s *Server) handleSDKShieldVerify(c *gin.Context) {
 		AreaCode:      "**",
 	}
 	resp.RealNameOperation = "None"
-	c.JSON(http.StatusOK, sdk.NewResponse(0, &resp))
+	c.JSON(http.StatusOK,http.NewResponse(0, &resp))
 }
 
 func (s *Server) serviceShieldVerify(ctx context.Context, id int64, token string) (record *store.Account, err error) {
@@ -150,33 +150,33 @@ func (s *Server) serviceShieldVerify(ctx context.Context, id int64, token string
 		return nil, err
 	}
 	if record.LoginToken == "" || record.LoginToken != token {
-		return nil, sdk.ErrInvalidLoginToken
+		return nil,http.ErrInvalidLoginToken
 	}
 	return record, nil
 }
 
 func (s *Server) handleSDKComboLogin(c *gin.Context) {
-	var req sdk.ComboLoginRequestData
+	var reqhttp.ComboLoginRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var data sdk.ComboLoginData
+	var datahttp.ComboLoginData
 	if err := json.Unmarshal([]byte(req.Data), &data); err != nil {
 		log.Error().Err(err).Msg("Failed to unmarshal data")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
 	account, err := s.serviceComboLogin(c, int64(data.UID), data.Token)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to combo login")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-202, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var resp sdk.ComboLoginResponseData
+	var resphttp.ComboLoginResponseData
 	resp.ComboID = "0"
-	resp.OpenID = sdk.ID(account.ID)
+	resp.OpenID =http.ID(account.ID)
 	resp.ComboToken = account.ComboToken
 	if data.Guest {
 		resp.Data = "{\"guest\":true}"
@@ -186,7 +186,7 @@ func (s *Server) handleSDKComboLogin(c *gin.Context) {
 	resp.Heartbeat = false
 	resp.AccountType = 1
 	resp.FatigueRemind = nil
-	c.JSON(http.StatusOK, sdk.NewResponse(0, &resp))
+	c.JSON(http.StatusOK,http.NewResponse(0, &resp))
 }
 
 func (s *Server) serviceComboLogin(ctx context.Context, id int64, token string) (record *store.Account, err error) {

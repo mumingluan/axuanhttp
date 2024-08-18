@@ -7,13 +7,13 @@ import (
 )
 
 func (s *Server) handleSDKGetAgreementInfos(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"marketing_agreements": []gin.H{},
 	}))
 }
 
 func (s *Server) handleSDKGetShopPriceTier(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"suggest_currency":   "USD",
 		"price_tier_version": "0",
 		"tiers":              []gin.H{},
@@ -21,15 +21,15 @@ func (s *Server) handleSDKGetShopPriceTier(c *gin.Context) {
 }
 
 func (s *Server) handleSDKCompareProtocolVersion(c *gin.Context) {
-	var req sdk.CompareProtocolVersionRequestData
+	var reqhttp.CompareProtocolVersionRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind request")
-		c.AbortWithStatusJSON(http.StatusOK, sdk.NewResponse(-106, nil))
+		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-106, nil))
 		return
 	}
-	var resp sdk.CompareProtocolVersionResponseData
+	var resphttp.CompareProtocolVersionResponseData
 	resp.Modified = true // TODO: check version
-	resp.Protocol = &sdk.ProtocolVersion{
+	resp.Protocol = &http.ProtocolVersion{
 		AppID:      4,
 		Language:   req.Language,
 		CreateTime: "0",
@@ -47,11 +47,11 @@ func (s *Server) handleSDKCompareProtocolVersion(c *gin.Context) {
 	case "zh-tw":
 		resp.Protocol.Major = 10
 	}
-	c.JSON(http.StatusOK, sdk.NewResponse(0, &resp))
+	c.JSON(http.StatusOK,http.NewResponse(0, &resp))
 }
 
 func (s *Server) handleSDKGetConfig(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"protocol":                  true,
 		"qr_enabled":                false,
 		"log_level":                 "INFO",
@@ -63,7 +63,7 @@ func (s *Server) handleSDKGetConfig(c *gin.Context) {
 }
 
 func (s *Server) handleSDKLoadConfig(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"id":                     6,
 		"game_key":               "hk4e_global",
 		"client":                 "PC",
@@ -87,7 +87,7 @@ func (s *Server) handleSDKLoadConfig(c *gin.Context) {
 }
 
 func (s *Server) handleSDKConfigCombo(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
+	c.JSON(http.StatusOK,http.NewResponse(0, gin.H{
 		"vals": gin.H{
 			"pay_payco_centered_host":    "bill.payco.com",
 			"email_bind_remind":          "true",
@@ -101,7 +101,7 @@ func (s *Server) handleSDKConfigCombo(c *gin.Context) {
 }
 
 func (s *Server) handleSDKABTest(c *gin.Context) {
-	c.JSON(http.StatusOK, sdk.NewResponse(0, []gin.H{{
+	c.JSON(http.StatusOK,http.NewResponse(0, []gin.H{{
 		"code":      1000,
 		"type":      2,
 		"config_id": "14",
