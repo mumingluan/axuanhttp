@@ -12,7 +12,6 @@ import (
 	"strings"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
-	"github.com/mumingluan/axuanhttp/pkg/sdk"
 	"github.com/mumingluan/axuanhttp/pkg/store"
 	"golang.org/x/crypto/bcrypt"
 )

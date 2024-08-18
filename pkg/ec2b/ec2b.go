@@ -4,7 +4,6 @@ import (
 	"crypto/rand"
 	"encoding/binary"
 	"fmt"
-	"github.com/mumingluan/axuanhttp/pkg/mt19937"
 )
 
 type Ec2b struct {
