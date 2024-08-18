@@ -7,7 +7,6 @@ import (
 	"os"
 	"path"
 	"time"
-
 	"github.com/rs/zerolog/log"
 	"github.com/spf13/viper"
 	"gopkg.in/natefinch/lumberjack.v2"

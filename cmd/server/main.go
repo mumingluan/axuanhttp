@@ -6,7 +6,6 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
-
 	"github.com/rs/zerolog/log"
 	"github.com/mumingluan/axuanhttp/pkg/config"
 	"github.com/mumingluan/axuanhttp/pkg/http"

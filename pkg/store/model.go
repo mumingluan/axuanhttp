@@ -3,7 +3,6 @@ package store
 import (
 	"context"
 	"time"
-
 	"github.com/uptrace/bun"
 )
 

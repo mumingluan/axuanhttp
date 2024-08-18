@@ -3,7 +3,6 @@ package http
 func (s *Server) initRouter() {
 	s.router.GET("/", s.handleDefault)
 	s.router.POST("/", s.handleDefault)
-
 	s.router.OPTIONS("/ping", s.handleOptionsPing)
 	s.router.GET("/ping", s.handlePing)
 	s.router.POST("/ping", s.handlePing)
@@ -11,10 +10,6 @@ func (s *Server) initRouter() {
 	// api handlers
 	api := s.router.Group("/api")
 	{
-		api.GET("/publicKey", s.handleAPIPublicKey)
-		api.GET("/status", s.handleAPIStatus)
-		api.GET("/status/legacy", s.handleAPIStatusLegacy)
-
 		api.POST("/account/token/check", s.handleAPITokenCheck)
 	}
 

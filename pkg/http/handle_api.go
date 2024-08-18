@@ -3,39 +3,12 @@ package http
 import (
 	"context"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
 	"github.com/mumingluan/axuanhttp/pkg"
 	"github.com/mumingluan/axuanhttp/pkg/sdk"
 	"github.com/mumingluan/axuanhttp/pkg/store"
 )
-
-func (s *Server) handleAPIPublicKey(c *gin.Context) {
-	c.String(http.StatusOK, s.secret.Server.PublicKeyPEM)
-}
-
-func (s *Server) handleAPIStatus(c *gin.Context) {
-	// TODO: not stable yet
-	c.JSON(http.StatusOK, sdk.NewResponse(0, gin.H{
-		"buildVersion": pkg.BuildVersion,
-		"protoVersion": pkg.ProtoVersion,
-		"maxPlayer":    -1,
-		"playerCount":  0, // TODO: get active player sessions from store
-	}))
-}
-
-func (s *Server) handleAPIStatusLegacy(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"retcode": 0,
-		"status": gin.H{
-			"buildVersion": pkg.BuildVersion,
-			"version":      pkg.ProtoVersion,
-			"maxPlayer":    -1,
-			"playerCount":  0, // TODO: get active player sessions from store
-		},
-	})
-}
 
 func (s *Server) handleAPITokenCheck(c *gin.Context) {
 	var req sdk.TokenCheckRequestData

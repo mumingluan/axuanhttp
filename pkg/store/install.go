@@ -5,7 +5,6 @@ import (
 	"crypto/rand"
 	"database/sql"
 	"encoding/base64"
-
 	"github.com/rs/zerolog/log"
 	"golang.org/x/crypto/bcrypt"
 )

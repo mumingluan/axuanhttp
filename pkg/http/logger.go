@@ -3,7 +3,6 @@ package http
 import (
 	"fmt"
 	"net/http/httputil"
-
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog/log"
 )
