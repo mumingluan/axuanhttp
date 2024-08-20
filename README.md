@@ -10,7 +10,7 @@ mkdir -p $GOPATH/src/github.com/mumingluan
 cd $GOPATH/src/github.com/mumingluan
 git clone https://github.com/mumingluan/axuanhttp.git
 cd axuanhttp
-go build -trimpath -ldflags "-s -w" -o bin/server cmd/server/main.go
+go build -trimpath -ldflags "-s -w" -o bin/server main.go
 # the binaries are in bin/ directory.
 ```
 

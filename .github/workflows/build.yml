@@ -27,7 +27,7 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp main.go
           cp config.example.yaml config.yaml
           zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
@@ -57,7 +57,7 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o axuanhttp cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp main.go
           cp config.example.yaml config.yaml
           zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp config.yaml data LICENSE README.md
       - name: Upload Artifact
@@ -87,7 +87,7 @@ jobs:
           cache: true
       - name: Build
         run: |
-          go build -trimpath -ldflags "-s -w" -o axuanhttp.exe cmd/server/main.go
+          go build -trimpath -ldflags "-s -w" -o axuanhttp.exe main.go
           cp config.example.yaml config.yaml
           zip -r axuanhttp_${{ matrix.goos }}_${{ matrix.goarch }}.zip axuanhttp.exe config.yaml data LICENSE README.md
       - name: Upload Artifact
