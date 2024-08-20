@@ -162,7 +162,7 @@ func (s *Server) handleSDKComboLogin(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var datahttp.ComboLoginData
+	var data http.ComboLoginData
 	if err := json.Unmarshal([]byte(req.Data), &data); err != nil {
 		log.Error().Err(err).Msg("Failed to unmarshal data")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
