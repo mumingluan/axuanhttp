@@ -25,7 +25,7 @@ func (s *Server) handleSDKRiskyCheck(c *gin.Context) {
 }
 
 func (s *Server) handleSDKShieldLogin(c *gin.Context) {
-	var reqhttp.ShieldLoginRequestData
+	var req http.ShieldLoginRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
@@ -45,7 +45,7 @@ func (s *Server) handleSDKShieldLogin(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var resphttp.ShieldLoginResponseData
+	var resp http.ShieldLoginResponseData
 	resp.Account = &http.Account{
 		UID:          http.ID(account.ID),
 		Name:          account.Username,
@@ -118,7 +118,7 @@ func (s *Server) serviceCreateAccount(ctx context.Context, username, password st
 }
 
 func (s *Server) handleSDKShieldVerify(c *gin.Context) {
-	var reqhttp.ShieldVerifyRequestData
+	var req http.ShieldVerifyRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
@@ -130,7 +130,7 @@ func (s *Server) handleSDKShieldVerify(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
 		return
 	}
-	var resphttp.ShieldVerifyResponseData
+	var resp http.ShieldVerifyResponseData
 	resp.Account = &http.Account{
 		UID:           req.UID,
 		Email:         account.Email,
@@ -156,7 +156,7 @@ func (s *Server) serviceShieldVerify(ctx context.Context, id int64, token string
 }
 
 func (s *Server) handleSDKComboLogin(c *gin.Context) {
-	var reqhttp.ComboLoginRequestData
+	var req http.ComboLoginRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
@@ -174,7 +174,7 @@ func (s *Server) handleSDKComboLogin(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-202, nil))
 		return
 	}
-	var resphttp.ComboLoginResponseData
+	var resp http.ComboLoginResponseData
 	resp.ComboID = "0"
 	resp.OpenID =http.ID(account.ID)
 	resp.ComboToken = account.ComboToken

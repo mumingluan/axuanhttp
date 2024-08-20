@@ -9,7 +9,7 @@ import (
 )
 
 func (s *Server) handleAPITokenCheck(c *gin.Context) {
-	var reqhttp.TokenCheckRequestData
+	var req http.TokenCheckRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind JSON")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
@@ -21,7 +21,7 @@ func (s *Server) handleAPITokenCheck(c *gin.Context) {
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-210, nil))
 		return
 	}
-	var resphttp.TokenCheckResponseData
+	var resp http.TokenCheckResponseData
 	resp.AccountType = 1
 	resp.IPInfo.CountryCode = "us"
 	c.JSON(http.StatusOK,http.NewResponse(0, &resp))

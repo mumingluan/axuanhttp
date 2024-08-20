@@ -21,13 +21,13 @@ func (s *Server) handleSDKGetShopPriceTier(c *gin.Context) {
 }
 
 func (s *Server) handleSDKCompareProtocolVersion(c *gin.Context) {
-	var reqhttp.CompareProtocolVersionRequestData
+	var req http.CompareProtocolVersionRequestData
 	if err := c.BindJSON(&req); err != nil {
 		log.Error().Err(err).Msg("Failed to bind request")
 		c.AbortWithStatusJSON(http.StatusOK,http.NewResponse(-106, nil))
 		return
 	}
-	var resphttp.CompareProtocolVersionResponseData
+	var resp http.CompareProtocolVersionResponseData
 	resp.Modified = true // TODO: check version
 	resp.Protocol = &http.ProtocolVersion{
 		AppID:      4,
