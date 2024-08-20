@@ -1,4 +1,4 @@
-package ec2b
+package mt19937
 
 import (
 	"encoding/binary"
