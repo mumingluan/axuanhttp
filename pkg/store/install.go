@@ -2,11 +2,6 @@ package store
 
 import (
 	"context"
-	"crypto/rand"
-	"encoding/base64"
-	"database/sql"
-	"github.com/rs/zerolog/log"
-	"golang.org/x/crypto/bcrypt"
 )
 
 func (s *Store) install(ctx context.Context) error {
