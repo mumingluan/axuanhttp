@@ -9,6 +9,25 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+func (s *Store) checkInit(ctx context.Context) bool {
+	s.db.NewCreateTable().Model((*Config)(nil)).IfNotExists().Exec(ctx)
+	config := new(Config)
+	err := s.db.NewSelect().Model(config).Where("key = ?", "init").Scan(ctx)
+	if err != sql.ErrNoRows && err != nil {
+		panic(err)
+	}
+	if err == sql.ErrNoRows || config.Value != "true" {
+		if _, err = s.db.NewInsert().Model(&Config{
+			Key:   "init",
+			Value: "true",
+		}).On("CONFLICT (key) DO UPDATE").Exec(ctx); err != nil {
+			panic(err)
+		}
+		return false
+	}
+	return true
+}
+
 func (s *Store) install(ctx context.Context) error {
 	if s.checkInit(ctx) {
 		return nil
