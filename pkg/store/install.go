@@ -23,5 +23,5 @@ func (s *Store) install(ctx context.Context) error {
 	hashed, err := bcrypt.GenerateFromPassword([]byte(base64Str), bcrypt.DefaultCost)
 	if err != nil {
 		return err
-	})
+	}
 }
