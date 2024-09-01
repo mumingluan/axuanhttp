@@ -9,7 +9,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-
 func (s *Store) install(ctx context.Context) error {
 	if s.checkInit(ctx) {
 		return nil
@@ -24,6 +23,5 @@ func (s *Store) install(ctx context.Context) error {
 	hashed, err := bcrypt.GenerateFromPassword([]byte(base64Str), bcrypt.DefaultCost)
 	if err != nil {
 		return err
-	}
 	})
 }
