@@ -10,10 +10,16 @@ import (
 )
 
 type Store struct {
+	config     *config.Config
 	db         *bun.DB
 	account    *AccountStore
 }
 
+func NewStore(config *config.Config) *Store {
+	s := &Store{config: config}
+	s.init()
+	return s
+}
 
 func (s *Store) init() {
 	sqlite, err := sql.Open(sqliteshim.ShimName, s.config.Database.DSN)
