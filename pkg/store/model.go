@@ -25,15 +25,6 @@ func (x *Timestamp) BeforeAppendModel(ctx context.Context, query bun.Query) erro
 	return nil
 }
 
-type Config struct {
-	bun.BaseModel `bun:"table:hk4e_config"`
-
-	Key   string `bun:"type:varchar(255),pk"`
-	Value string `bun:"type:text,nullzero"`
-
-	Timestamp
-}
-
 type Account struct {
 	bun.BaseModel `bun:"table:hk4e_accounts"`
 
